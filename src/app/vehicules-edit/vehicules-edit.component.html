@@ -1,0 +1,104 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Modifier véhicule</h1>
+    <p class="mb-4">
+        Afin de Modifier un vehicule, veuillez remplir le formulaire ci-dessous
+    </p>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home/welcome">Acceuil</a></li>
+            <li class="breadcrumb-item"><a routerLink="/home/vehicules">Véhicules</a></li>
+          
+          <li class="breadcrumb-item active" aria-current="page">Modifier véhicule</li>
+        </ol>
+      </nav>
+
+
+      <!--
+
+newVehicule = new FormGroup({
+  matricule: new FormControl('',Validators.required),
+  chauffeur: new FormControl('',Validators.required),
+  status: new FormControl('',Validators.required),
+  dateJoin: new FormControl('',Validators.required),
+  
+})
+      -->
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Modifier Véhicule</h6>
+        </div>
+        <div class="card-body">
+
+            <img *ngIf="vehicule != null" src="{{vehicule.photoURL}}" width="150px" style="border-radius: 15px; display:block" class="mb-5" alt="">
+            {{uploadStatus}}    
+            
+            <input type="file"
+                        id="file"
+                        #userPhoto
+                        (change)="onFileSelected($event)"
+                        name="image"
+                        autocomplete="off"
+                        />
+
+
+
+            <form [formGroup]="newVehicule" (ngSubmit)="updateVehicule()" >
+                <div class="form-group">
+                    
+                </div>
+                <div class="form-group">
+                    <label for="">Matricule</label>
+                    <input type="text" class="form-control" formControlName="matricule">
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Chauffeur</label>
+                            <select class="form-control" formControlName="chauffeur">
+                                <option value="">Choisissez un chauffeur</option>
+                                <option value="{{c.fullname}}" *ngFor="let c of chauffeures">{{c.fullname}}</option>
+                                
+                                
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="">Date d'ajout</label>
+                    <input type="date" class="form-control" formControlName="dateJoin">
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="">Statut</label>
+                    <select class="form-control" formControlName="status">
+                        <option value="">Choisissez une status</option>
+                        <option value="en service">en service</option>
+                        <option value="hors service">hors service</option>
+                        
+                        
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-secondary" type="submit" [disabled]=" ! newVehicule.valid ">Modifier</button>
+                </div>
+
+                
+            </form>
+
+
+            
+
+        </div>
+            
+    </div>
+
+</div>

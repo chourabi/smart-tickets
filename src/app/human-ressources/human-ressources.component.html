@@ -1,0 +1,91 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">List des Chauffeurs</h1>
+    <p class="mb-4">
+        Le tableau ci-dessous montre une liste de tous les chauffeures du parc.
+    </p>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/home/welcome">Acceuil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Chauffeurs de parc</li>
+        </ol>
+      </nav>
+
+    
+    <p class="mb-4">
+        <a routerLink="/home/rh-add" class="btn btn-primary text-white">Ajouter un nouveau</a>
+    </p>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des Chauffeurs de parc</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    
+                <table class="table">
+                    <thead>
+
+
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom prénom</th>
+                        <th scope="col">Numéro de téléphone</th>
+                        <th scope="col">Matricule voiture</th>
+                        <th scope="col">Trajet (secteur)</th>
+                        <th scope="col">Heurs de travails</th>
+                        <th>Statues</th>
+                        <th>Date MEPC</th>
+                        
+                        
+                        
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let e of employees;let j=index;">
+                            <td>{{ j+1 }}</td>
+                            <td> 
+                            
+                                <img src="{{e.employee.photoURL}}" alt="" *ngIf="e.employee.photoURL!= null" width="50px" style="border-radius: 50%;">
+                               <strong>
+                                {{ e.employee.fullname }}
+                               </strong>
+                            </td>
+                            <td> {{ e.employee.phone }} </td>
+                            <td> {{ e.employee.vehiculeMatricule }} </td>
+                            <td> {{ e.employee.line }} </td>
+                            <td> {{ e.employee.working_hour }} </td>
+                            <td> 
+                            
+                                <span class="badge badge-success" *ngIf="e.employee.status == 'en service'" >{{ e.employee.status }}</span>
+                                <span class="badge badge-warning" *ngIf="e.employee.status == 'hors service'">{{ e.employee.status }}</span>
+                                
+                            </td>
+
+
+                            
+                            <td> {{e.employee.dateJoin | date}} </td>
+                            <td>
+
+                                <button class="btn-sm btn btn-info" style="margin-right: 10px;" [routerLink]="'/home/rh-edit/'+e.id">Détails</button>
+                                <button  class="btn-sm btn btn-danger" style="margin-right: 10px;" (click)="deleteEmployee(e.id)" >supprimer</button>
+                                
+                            
+                            </td>
+                        </tr>
+                      
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+</div>

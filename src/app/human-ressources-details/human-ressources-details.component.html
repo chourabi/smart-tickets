@@ -1,0 +1,119 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Modifier un employée</h1>
+    <p class="mb-4">
+        Afin de Modifier un employée, veuillez remplir le formulaire ci-dessous
+    </p>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home/welcome">Acceuil</a></li>
+            <li class="breadcrumb-item"><a routerLink="/home/rh">ressources humaines</a></li>
+          
+          <li class="breadcrumb-item active" aria-current="page">Modifier employée</li>
+        </ol>
+      </nav>
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Modifier employée</h6>
+        </div>
+        <div class="card-body">
+
+            
+
+            <img *ngIf="employee != null" src="{{employee.photoURL}}" width="150px" style="border-radius: 50%; display:block" class="mb-5" alt="">
+            {{uploadStatus}}    
+            
+            <input type="file"
+                        id="file"
+                        #userPhoto
+                        (change)="onFileSelected($event)"
+                        name="image"
+                        autocomplete="off"
+                        />
+
+
+                        <form [formGroup]="newEmployee" (ngSubmit)="updateEmployee()" >
+                            <div class="form-group">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="">Nom et prénom</label>
+                                <input type="text" class="form-control" formControlName="fullname">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Numéro de téléphone</label>
+                                <input type="tel" class="form-control" formControlName="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Matricule de véhicules</label>
+                                <input type="email" class="form-control" formControlName="vehiculeMatricule">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Trajet</label>
+                                        <select class="form-control" formControlName="line">
+                                            <option value="">Choisissez une trajet</option>
+                                            <option value="{{l.line}}" *ngFor="let l of lines">{{l.line}}</option>
+                                            
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Heurs de travails</label>
+                                        <input type="time" class="form-control" formControlName="working_hour">
+                                    </div>
+                                </div>
+                                <!--<div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Par</label>
+                                        <select class="form-control" formControlName="freq">
+                                            <option value="">Choisissez une durée</option>
+                                            <option value="Heure">Heure</option>
+                                            <option value="Mois">Mois</option>
+                                            
+                                            
+                                        </select>
+                                    </div>
+                                </div>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="">Date MEPC</label>
+                                <input type="date" class="form-control" formControlName="dateJoin">
+                            </div>
+                            
+            
+                            <div class="form-group">
+                                <label for="">Statut</label>
+                                <select class="form-control" formControlName="status">
+                                    <option value="">Choisissez une status</option>
+                                    <option value="en service">en service</option>
+                                    <option value="hors service">hors service</option>
+                                    
+                                    
+                                </select>
+                            </div>
+            
+                            <div class="form-group">
+                                <button class="btn btn-secondary" type="submit" [disabled]=" ! newEmployee.valid ">Ajouter</button>
+                            </div>
+            
+                            
+                        </form>
+
+
+            
+
+        </div>
+            
+    </div>
+
+</div>

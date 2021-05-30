@@ -1,0 +1,180 @@
+#map{
+    height: 100vh;
+}
+
+.bottom-btn-block{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.my-position{
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+}
+
+
+
+.legende-box{
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+}
+.confirmed{
+    background-color: #F44336;
+    border: 2px solid white;
+    border-radius: 7px;
+}
+
+.suspected{
+    
+    background-color: #ffc107;
+    border: 2px solid white;
+    border-radius: 7px;
+}
+.new{
+    
+    background-color: #03a9f4;
+    border: 2px solid white;
+    border-radius: 7px;
+}
+
+.legende{
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+}
+
+.legend-box{
+    color: white;
+    font-weight: 500;
+}
+
+.search-zone{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 50px;
+    
+}
+
+.search-result{
+    background-color: white;
+    border-radius: 7px;
+    margin-top: 15px;
+    max-height: 55vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+.latest-infections{
+    position: fixed;
+    z-index: 100000;
+    top: 25px;
+    left: 25px;
+    width: 220px;
+    height: 50vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #353535;
+    border-radius: 3px;
+    border: 2px solid #7b7b7b;
+    color: white;
+}
+
+.small-stat-block{
+    position: fixed;
+    z-index: 100000000000000000;
+    border: 2px solid #7b7b7b;
+    width: 250px;
+    height: 127px;
+    right: 20px;
+    border-radius: 3px;
+    bottom: 126px;
+}
+
+
+.infection-bloc{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.color-new{
+    color: #03a9f4;
+}
+
+.color-sus{
+    color: #ffc107;
+}
+
+.color-conf{
+    color: #F44336;
+}
+
+.about-l{
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+
+@media only screen and (max-width: 570px) {
+    .latest-infections {
+      height: 25vh;
+    }
+  }
+
+
+
+  .latest-infections {
+    --scrollbarBG: #242424;
+    --thumbBG: rgb(109, 109, 109);
+  }
+  .latest-infections::-webkit-scrollbar {
+    width: 11px;
+  }
+  .latest-infections {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+  .latest-infections::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+  .latest-infections::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+  }
+  
+
+  .serverIsFull{
+    position: fixed;
+    z-index: 100000000000000000000000000000000;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    top: 0;
+    left: 0;
+  }
+
+
+  .closebtn{
+    position: absolute;
+    top: 5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #ffc107;
+    color: #353535;
+    right: 5px;
+    z-index: 1000000;
+  }
+
+  .showLatestInefect-bloc{
+    position: fixed;
+    top: 30px;
+    left: 25px;
+  }

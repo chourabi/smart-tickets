@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    font-family: 'Saira Condensed', sans-serif;
+}
+
+#layoutAuthentication #layoutAuthentication_content {
+  background-color: #00bcd4;
+  min-width: 0;
+  flex-grow: 1;
+}

@@ -1,0 +1,96 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">List des véhicules</h1>
+    <p class="mb-4">
+        Le tableau ci-dessous montre une liste de tous les véhicules du parc.
+    </p>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/home/welcome">Acceuil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">véhicules</li>
+        </ol>
+      </nav>
+
+    
+    <p class="mb-4">
+        <a routerLink="/home/vehicules-add" class="btn btn-primary text-white">Ajouter un nouveau</a>
+    </p>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des véhicules</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    
+                <table class="table">
+                    <thead>
+
+                        <!--
+  matricule: new FormControl('',Validators.required),
+  chauffeur: new FormControl('',Validators.required),
+  status: new FormControl('',Validators.required),
+  dateJoin: new FormControl('',Validators.required),
+
+                        -->
+
+
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Matricule</th>
+                        <th scope="col">Chauffeur</th>
+                        <th>Statut</th>
+                        <th>Date d'ajout</th>
+                        
+                        
+                        
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let e of vehicules;let j=index;">
+                            <td>{{ j+1 }}</td>
+                            <td>
+                                 <img src="{{e.vehicule.photoURL}}" alt="" *ngIf="e.vehicule.photoURL!= null" width="250px" style=" border-radius: 15px; ">
+                            </td>
+                            <td> 
+                            
+                               
+                               <strong>
+                                {{ e.vehicule.matricule }}
+                               </strong>
+                            </td>
+                            <td> {{ e.vehicule.chauffeur }} </td>
+                            <td> 
+                            
+                                <span class="badge badge-success" *ngIf="e.vehicule.status == 'en service'" >{{ e.vehicule.status }}</span>
+                                <span class="badge badge-warning" *ngIf="e.vehicule.status == 'hors service'">{{ e.vehicule.status }}</span>
+                                
+                            </td>
+
+
+                            
+                            <td> {{e.vehicule.dateJoin | date}} </td>
+                            <td>
+                                <button class="btn-sm btn btn-info" style="margin-right: 10px;" [routerLink]="'/home/vehicules-edit/'+e.id">Détails</button>
+                                <button  class="btn-sm btn btn-danger" style="margin-right: 10px;" (click)="deleteVehicule(e.id)" >supprimer</button>
+                                
+                            
+                            </td>
+                        </tr>
+                      
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+</div>
