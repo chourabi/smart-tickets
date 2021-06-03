@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, finalize } from "rxjs/operators";
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-human-ressources-add',
@@ -17,11 +18,13 @@ export class HumanRessourcesAddComponent implements OnInit {
   newEmployee = new FormGroup({
     fullname: new FormControl('',Validators.required),
     phone: new FormControl('',Validators.required),
-    vehiculeMatricule: new FormControl(''),
     line: new FormControl('',Validators.required),
     working_hour: new FormControl('',Validators.required),
     status: new FormControl('',Validators.required),
     dateJoin: new FormControl('',Validators.required),
+    username: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required),
+    
     
   })
 
@@ -35,7 +38,7 @@ export class HumanRessourcesAddComponent implements OnInit {
   downloadURL: Observable<string>;
  
 
-  constructor(private db:AngularFirestore, private router:Router, private storage: AngularFireStorage) { }
+  constructor(private db:AngularFirestore, private router:Router, private storage: AngularFireStorage, private auth:AuthService) { }
 
   ngOnInit(): void {
     this.getLines();
@@ -51,9 +54,19 @@ export class HumanRessourcesAddComponent implements OnInit {
 
 
   create(){
-    this.db.collection('employees').add(this.newEmployee.value).then((data)=>{
-      this.router.navigate(['/home/rh']);
+    let e = this.newEmployee.value;
+
+    this.auth.createAccount(e.username,e.password).then((res)=>{
+
+      delete e.password;
+      e.isDriver = true;
+
+      this.db.collection('employees').add(e).then((data)=>{
+        this.router.navigate(['/home/rh']);
+      })
     })
+
+    
   }
 
 

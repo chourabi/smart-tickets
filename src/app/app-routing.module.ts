@@ -6,6 +6,8 @@ import { HumanRessourcesDetailsComponent } from './human-ressources-details/huma
 import { HumanRessourcesComponent } from './human-ressources/human-ressources.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { TripsAddComponent } from './trips-add/trips-add.component';
+import { TripsComponent } from './trips/trips.component';
 import { VehiculesAddComponent } from './vehicules-add/vehicules-add.component';
 import { VehiculesEditComponent } from './vehicules-edit/vehicules-edit.component';
 import { VehiculesComponent } from './vehicules/vehicules.component';
@@ -17,6 +19,10 @@ const routes: Routes = [
 
   { path:'home' , component:HomeComponent, children:[
     { path:'welcome', component:WelcomeComponent },
+    { path:'trips', component:TripsComponent },
+    { path:'trips-add', component:TripsAddComponent },
+    
+    
 
     // rh
     { path:'rh', component:HumanRessourcesComponent },

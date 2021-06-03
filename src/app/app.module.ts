@@ -27,6 +27,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { VehiculesComponent } from './vehicules/vehicules.component';
 import { VehiculesAddComponent } from './vehicules-add/vehicules-add.component';
 import { VehiculesEditComponent } from './vehicules-edit/vehicules-edit.component';
+import { TripsComponent } from './trips/trips.component';
+import { TripsAddComponent } from './trips-add/trips-add.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { VehiculesEditComponent } from './vehicules-edit/vehicules-edit.componen
     WelcomeComponent,
     VehiculesComponent,
     VehiculesAddComponent,
-    VehiculesEditComponent
+    VehiculesEditComponent,
+    TripsComponent,
+    TripsAddComponent
   ],
   imports: [
     ChartsModule,

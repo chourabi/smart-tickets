@@ -1,0 +1,73 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">List des voyages</h1>
+
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home/welcome">Acceuil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">voyages</li>
+        </ol>
+    </nav>
+
+
+    <p class="mb-4">
+        <a routerLink="/home/trips-add" class="btn btn-primary text-white">Ajouter un nouveau voyage</a>
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Voyages en temps réel</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+
+                    <table class="table">
+                        <thead>
+
+
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Date crétaion</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Nombes des places</th>
+                                <th scope="col">Tarif</th>
+                                <th scope="col">Trajet</th>
+                                <th scope="col">Vehicule</th>
+                                
+                                
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let t of trips;let j=index;">
+                                <td>{{ j+1 }}</td>
+                                <td>{{ t.addDate.toDate() | date:'medium' }}</td>
+                                <td>
+                                    <span class="badge badge-warning" *ngIf="t.isOpen == true ">en cours</span>
+                                    <span class="badge badge-success" *ngIf="t.isOpen == false ">à démarée</span>
+                                    
+                                </td>
+                                <td> {{t.reservedPlases}} / {{ t.nbrPlace }}</td>
+                                <td>{{ t.tarif }}</td>
+                                <td>{{ t.trajet}}</td>
+                                <td><a [routerLink]=" '/home/vehicules-edit/'+t.vehicule" >détails</a></td>
+                                
+                                
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

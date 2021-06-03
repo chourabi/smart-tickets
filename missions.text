@@ -1,0 +1,21 @@
+1 - web gestion des voyage 
+    voyage
+        - chauffeur
+        - vehicule
+        - nbrPlace
+        - tarif / persone
+        - trajet
+
+
+mobile 
+
+    * chauffeures
+        - voir list des voyage affecter
+            - details de voyage 
+                * update nbr place
+                * lancement de voyage
+
+        
+
+
+

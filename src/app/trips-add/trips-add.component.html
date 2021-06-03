@@ -1,0 +1,75 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Ajouter un nouveau Chauffeurs</h1>
+    <p class="mb-4">
+        Afin d'ajouter un nouveau Chauffeurs, veuillez remplir le formulaire ci-dessous
+    </p>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home/welcome">Acceuil</a></li>
+            <li class="breadcrumb-item"><a routerLink="/home/trips">voyages</a></li>
+
+            <li class="breadcrumb-item active" aria-current="page">Ajouter un nouveau voyage</li>
+        </ol>
+    </nav>
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau voyage</h6>
+        </div>
+        <div class="card-body">
+
+            <form [formGroup]="newTrip" (ngSubmit)="create()">
+                <div class="form-group">
+                    <label for="">Véhicule</label>
+                    <select class="form-control" formControlName="id_vehicule">
+                        <option value="">Choisissez une vehicule</option>
+                        
+                        <option value="{{v.id}}" *ngFor="let v of vehicules">{{v.data.matricule}}</option>
+
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="">tarif par persone</label>
+                    <input type="text" class="form-control" formControlName="tarif">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nombre de places</label>
+                    <input type="text" class="form-control" formControlName="nbrPlace">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Trajet</label>
+                    <select class="form-control" formControlName="trajet">
+                        <option value="">Choisissez une trajet</option>
+                        <option value="{{l.line}}" *ngFor="let l of lines">{{l.line}}</option>
+
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-secondary" type="submit" [disabled]=" ! newTrip.valid ">Ajouter</button>
+                </div>
+
+
+            </form>
+
+
+
+
+        </div>
+
+    </div>
+
+</div>
