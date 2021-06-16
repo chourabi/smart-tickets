@@ -14,6 +14,8 @@ export class TripsAddComponent implements OnInit {
 
   newTrip = new FormGroup({
     id_vehicule : new FormControl('',Validators.required),
+    driver_id : new FormControl('',Validators.required),
+    
     tarif: new FormControl('0',Validators.required),
     trajet: new FormControl('',Validators.required),
     nbrPlace: new FormControl('0',Validators.required),
@@ -24,6 +26,7 @@ export class TripsAddComponent implements OnInit {
 
   lines = [];
   vehicules = [];
+  drivers = [];
 
 
  
@@ -34,6 +37,7 @@ export class TripsAddComponent implements OnInit {
     this.getLines();
 
     this.getVehicules();
+    this.getDrivers();
 
   }
 
@@ -53,12 +57,24 @@ export class TripsAddComponent implements OnInit {
     })
   }
 
+  getDrivers(){
+    this.drivers = [];
+
+    this.db.collection('employees').get().subscribe((data)=>{
+      data.docs.forEach(doc => {
+        this.drivers.push({ id:doc.id, data:doc.data() });
+      });
+    })
+  }
+
 
 
 
   create(){
     this.db.collection('triptogo').add({
       vehicule : this.newTrip.value.id_vehicule,
+      driver_id : this.newTrip.value.driver_id,
+      
       tarif : this.newTrip.value.tarif,
       trajet : this.newTrip.value.trajet,
       nbrPlace : this.newTrip.value.nbrPlace,

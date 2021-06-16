@@ -61,13 +61,14 @@ export class HumanRessourcesAddComponent implements OnInit {
       delete e.password;
       e.isDriver = true;
 
-      this.db.collection('employees').add(e).then((data)=>{
+      this.db.collection('employees').doc(res.user.uid).set(e).then((data)=>{
         this.router.navigate(['/home/rh']);
       })
     })
 
     
   }
+
 
 
 

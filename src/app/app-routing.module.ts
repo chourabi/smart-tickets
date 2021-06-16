@@ -18,7 +18,7 @@ const routes: Routes = [
   { path:'' , redirectTo:'/home/welcome', pathMatch:'full' },
 
   { path:'home' , component:HomeComponent, children:[
-    { path:'welcome', component:WelcomeComponent },
+    { path:'welcome', component:TripsComponent },
     { path:'trips', component:TripsComponent },
     { path:'trips-add', component:TripsAddComponent },
     

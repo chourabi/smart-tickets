@@ -37,6 +37,19 @@
 
                 </div>
 
+                <div class="form-group">
+                    <label for="">Chauffeurs</label>
+                    <select class="form-control" formControlName="driver_id">
+                        <option value="">Choisissez un Chauffeur</option>
+                        
+                        <option value="{{v.id}}" *ngFor="let v of drivers">{{v.data.fullname}}</option>
+
+
+                    </select>
+
+                </div>
+
+                
 
                 <div class="form-group">
                     <label for="">tarif par persone</label>

@@ -35,17 +35,15 @@ export class SigninComponent implements OnInit {
      this.auth.logUser(this.loginForm.value.email,this.loginForm.value.password).then((dataUser)=>{
 
       
-      this.firestore.collection('campany',ref=>ref.where('headmaster','==',dataUser.user.uid)).get().subscribe(data=>{
+      this.firestore.collection('users').doc(dataUser.user.uid).get().subscribe(data=>{
         
-        if(data.docs.length===0){
+        if(data.exists === false){
           this.showErrorBloc=true;
           this.errorMessage="Invalid Master informations";
         }else{
-          window.localStorage.setItem('idConnectedUser',dataUser.user.uid);
-          window.localStorage.setItem('idCompany',data.docs[0].data().idcompany);
           
         //routing
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home/welcome']);
         }
         
 
